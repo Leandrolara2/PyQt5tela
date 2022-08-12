@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QToolTip
 
 class Janela(QMainWindow):
     def __init__ (self):
@@ -10,12 +10,21 @@ class Janela(QMainWindow):
         self.largura = 800
         self.altura = 600
         self.titulo = "Primeira Janela"
+
+        botao1 = QPushButton('Botao 1', self)
+        botao1.move(150,200)
+        botao1.resize(150,80)
+        botao1.setStyleSheet('QPushButton {background-color:#0FB320; font:bold; font-size:20px}')
+        botao1.clicked.connect(self.botao1_click)
         self.CarregarJanela()
 
     def CarregarJanela(self): 
         self.setGeometry(self.esquerda,self.topo, self.largura,self.altura)
         self.setWindowTitle(self.titulo)
         self.show()
+
+    def botao1_click(self):
+        print('o botao foi clicado')
 
 aplicacao = QApplication(sys.argv)
 j = Janela ()
