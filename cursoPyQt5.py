@@ -16,6 +16,12 @@ class Janela(QMainWindow):
         botao1.resize(150,80)
         botao1.setStyleSheet('QPushButton {background-color:#0FB320; font:bold; font-size:20px}')
         botao1.clicked.connect(self.botao1_click)
+
+        botao2 = QPushButton('Botao 2', self)
+        botao2.move(350,200)
+        botao2.resize(150,80)
+        botao2.setStyleSheet('QPushButton {background-color:#0FB320; font:bold; font-size:20px}')
+        botao2.clicked.connect(self.botao2_click)
         self.CarregarJanela()
 
     def CarregarJanela(self): 
@@ -24,7 +30,10 @@ class Janela(QMainWindow):
         self.show()
 
     def botao1_click(self):
-        print('o botao foi clicado')
+        print('Botao 1 dois foi clicado!')
+
+    def botao2_click(self):
+        print('Botao 2 dois foi clicado!')
 
 aplicacao = QApplication(sys.argv)
 j = Janela ()
