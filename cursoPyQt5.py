@@ -1,5 +1,6 @@
+from cProfile import label
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QToolTip
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QToolTip, QLabel
 
 class Janela(QMainWindow):
     def __init__ (self):
@@ -14,7 +15,7 @@ class Janela(QMainWindow):
         botao1 = QPushButton('Botao 1', self)
         botao1.move(150,200)
         botao1.resize(150,80)
-        botao1.setStyleSheet('QPushButton {background-color:#0FB320; font:bold; font-size:20px}')
+        botao1.setStyleSheet('QPushButton {background-color:#0FB320;font:bold;font-size:20px}')
         botao1.clicked.connect(self.botao1_click)
 
         botao2 = QPushButton('Botao 2', self)
@@ -22,6 +23,11 @@ class Janela(QMainWindow):
         botao2.resize(150,80)
         botao2.setStyleSheet('QPushButton {background-color:#0FB320; font:bold; font-size:20px}')
         botao2.clicked.connect(self.botao2_click)
+        self.label_1 = QLabel(self)
+        self.label_1.setText("Aperte algum botão!")
+        self.label_1.move(50,50)
+        self.label_1.setStyleSheet('QLabel {font:bold;font-size:25px; color:"blue"}')
+        self.label_1.resize(400,30)
         self.CarregarJanela()
 
     def CarregarJanela(self): 
@@ -30,10 +36,13 @@ class Janela(QMainWindow):
         self.show()
 
     def botao1_click(self):
-        print('Botao 1 dois foi clicado!')
+        self.label_1.setText("O botao 1 foi clicado")
+        self.label_1.setStyleSheet('QLabel {font:bold;font-size:25px; color:"green"}')
 
     def botao2_click(self):
-        print('Botao 2 dois foi clicado!')
+        self.label_1.setText("O botao 2 foi clicado")
+        self.label_1.setStyleSheet('QLabel {font:bold;font-size:25px; color:"red"}')
+
 
 aplicacao = QApplication(sys.argv)
 j = Janela ()
